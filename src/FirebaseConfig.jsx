@@ -1,4 +1,10 @@
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
+
+
+
 
 const Config = {
   apiKey: import.meta.env.VITE_REACT_APP_FIREBASE_API_KEY,
@@ -11,4 +17,11 @@ const Config = {
   measurementId: import.meta.env.VITE_REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-firebase.initializeApp(Config);
+if (!firebase.apps.length) {
+  firebase.initializeApp(Config);
+}
+
+export default firebase;
+
+
+
